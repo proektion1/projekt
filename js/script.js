@@ -87,15 +87,15 @@ console.log(decr++);  */
 
 
 
-console.log(2*4 == 8);
-console.log(2*4 === '8');
+/* console.log(2*4 == 8);
+console.log(2*4 === '8'); */
 
 /* const isChek = true,
         isClose = true;
 
     console.log(isChek&&isClose); */
 
-    const isChek = false,
+/*     const isChek = false,
         isClose = false;
 
-    console.log(isChek||!isClose);
+    console.log(isChek||!isClose); */
