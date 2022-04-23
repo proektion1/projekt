@@ -1,7 +1,7 @@
 "use strict"; 
 
 const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-    if (numberOfFilms > 0 && numberOfFilms < 10) {
+    if (numberOfFilms >= 0 && numberOfFilms < 10) {
     console.log('Просмотрено довольно мало фильмов');
     }
     else if (numberOfFilms >=10 && numberOfFilms <30) {
