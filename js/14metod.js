@@ -17,11 +17,11 @@ const logg = "Hello, world!";
 console.log(logg.slice(7, 12)); // world
 console.log(logg.slice(7));     // world!
 console.log(logg.slice(-5));     // orld! - c конца строки отсчёт
-console.log(logg.substring(7, 11)); // world
+console.log(logg.substring(7, 11)); // worl
 
 
 
-const num =12.2;
+const num = 12.2;
 console.log(Math.round(num)); //округление
 
 const test = "12.2px";
