@@ -167,6 +167,7 @@ function myCopyHome (newObject) {
     }
     return cloneObj;
 }
+
 const secObj = {
     f: 64,
     a: 54,
