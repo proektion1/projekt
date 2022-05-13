@@ -36,8 +36,6 @@ for (let value of arr) {
 
 
 
-
-
 // Запрашиваем данные и превращаем в масси
 const str = prompt("", ""); 
 const products = str.split(", "); // запятая - разделитель элементов
