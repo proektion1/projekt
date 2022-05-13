@@ -10,8 +10,6 @@ const leftBorderWidth = 1;
 number = 10;
 console.log(number); */
 
-
-
 // ОБЪЕКТЫ
 //есть значение, которое описывает объект, например: имя - Джон
 /* const obj = {
