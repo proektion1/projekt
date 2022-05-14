@@ -6,6 +6,7 @@ const personalMovieDB = {
     genres: [],
     privat: false,
     start: function () {
+       
         while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
             personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');}
     },
