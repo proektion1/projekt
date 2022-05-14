@@ -55,7 +55,10 @@ const personalMovieDB = {
         }
     },
     writeYourGenres: function() {
-        for (let i=1; i <=3; i++) {
+       /*  for (let i=1; i <=3; i++) {
+
+
+          1 способ (спрашиваем по порядку)  
             let genre = prompt (`Ваш любимый жанр под номером ${i}`);
             personalMovieDB.genres[i - 1] = genre;
                 if (genre === '' || genre == null) {
@@ -63,11 +66,23 @@ const personalMovieDB = {
                 i--;}
                 else {
                     personalMovieDB.genres[i - 1] = genre;
-                }
+                } */
+
+                // 2 способ - спршиваем через запятую
+                for (let i=1; i <2; i++) {
+                let genre = prompt(`Введите ваши любимые жанры через запятую`);
+                if (genre === '' || genre == null) {
+                    console.log("Вы ввели некорректные данные");
+                    i--;}
+                    else {
+                        personalMovieDB.genres = genre.split(", ");;
+                    } 
         }
-        personalMovieDB.genres.forEach((item, i) => {
+
+
+/*         personalMovieDB.genres.forEach((item, i) => {
             console.log(`Любимый жанр №${i + 1} - это ${item}'`);
-        });
+        }); */
         
     } 
 
