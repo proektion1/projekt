@@ -29,4 +29,4 @@ hearts.forEach(item=> {
 });
 
 const jneHeart = document.querySelector('.heart'); // Позволяет получить 1 элемент
-console.log(jneHeart);
+console.log(jneHeart); // самый первый
