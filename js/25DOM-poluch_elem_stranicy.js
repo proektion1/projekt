@@ -1,5 +1,19 @@
 "use strict";
 
+/* НОВЫЕ МЕТОДЫ */
+/* Получаем css селектор (класс, вложеность, атрибут и т.д.) */
+// Позволяем применять forEach
+const hearts = document.querySelectorAll('.heart');
+console.log(hearts);
+hearts.forEach(item=> {
+    console.log(item);
+});
+
+const jneHeart = document.querySelector('.heart'); // Позволяет получить 1 элемент
+console.log(jneHeart); // самый первый
+
+
+
 /* СТАРЫЕ МЕТОДЫ */
 /* 1. Получаем объект по ID */
 const box =  document.getElementById('box');
@@ -19,14 +33,3 @@ console.log(btn1s);     //вывести конкретную кнопку
 const circles = document.getElementsByClassName('circle'); // псевдомассив
 console.log(circles);
 
-/* НОВЫЕ МЕТОДЫ */
-/* Получаем css селектор (класс, вложеность, атрибут и т.д.) */
-// Позволяем применять forEach
-const hearts = document.querySelectorAll('.heart');
-console.log(hearts);
-hearts.forEach(item=> {
-    console.log(item);
-});
-
-const jneHeart = document.querySelector('.heart'); // Позволяет получить 1 элемент
-console.log(jneHeart); // самый первый
