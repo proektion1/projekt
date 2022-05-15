@@ -50,8 +50,9 @@ poster.style.backgroundImage = "url('img/bg.jpg')";
 
 /* Меняем список фильмов */
 movieDB.movies.sort(); // Отсортируем список фильмов по алфавиту
-ffffilms.forEach (function (element, nn) { 
-    element.innerHTML = `${nn+1}. ${movieDB.movies[nn]}
+ffffilms.forEach (function (element, nn) {  // Берем каждый элемент псевдомассива и его номер
+                                            //добавляем штмл код в этот элемент (старый удаляется)
+    element.innerHTML = `${nn+1}. ${movieDB.movies[nn]} 
                         <div class=\"delete\"></div>`;
 });
 
