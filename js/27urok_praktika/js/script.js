@@ -83,6 +83,8 @@ movieDB.movies.forEach ((film, i) => {
 
 
 /*  
+
+
 ДРУГОЙ СПОСОБ - если заменить только текст
 for (let m=0; m<ffffilms.length; m++) {
     ffffilms[m].textContent = movieDB.movies[m];
