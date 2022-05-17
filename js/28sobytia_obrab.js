@@ -9,7 +9,7 @@ const deleteelement = (e) => {
     //console.log(e.currentTarget); //показывает всплыие элементов при вложенных элементах
     console.log(e.type);
 /*     i++;
-    if (i==1) {
+    if (i==1) { 
         btn.removeEventListener('click', deleteelement); //удаляем обработчик события
     } */
 };
