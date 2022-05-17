@@ -19,7 +19,9 @@ const movieDB = {
         "Лига справедливости",
         "123",
         "Одержимость",
-        "Скотт11 Пилигрим против..."
+        "Скотт11 Пилигрим против...",
+        "ЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯ",
+        "ЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯ111111"
     ]
 };
 
@@ -27,7 +29,9 @@ const movieDB = {
 const delAds = document.querySelectorAll('.promo__adv img'),
       poster = document.querySelector('.promo__bg'),
       genrFilm = poster.querySelector('.promo__genre'),
-      ffffilms =  document.querySelectorAll('.promo__interactive-item');
+      //ffffilms =  document.querySelectorAll('.promo__interactive-item'),
+      ffffilm1s =  document.querySelector('.promo__interactive-list');
+      ffffilm1s.innerHTML = "";
 
 /* 1 способ - удаляет только рекламу - ВЕРНЫЙ */
 console.log(delAds);
@@ -47,14 +51,35 @@ genrFilm.textContent = "Драма";
 /* Меняем ФОН */
 poster.style.backgroundImage = "url('img/bg.jpg')";
 
-
-/* Меняем список фильмов */
 movieDB.movies.sort(); // Отсортируем список фильмов по алфавиту
+
+/* Меняем список фильмов 
+Если кол-во на странице = кол-во в нашей БД
+Если в БД больше - не отобразятся лишние
+Если меньше  UNDEFINED
 ffffilms.forEach (function (element, nn) {  // Берем каждый элемент псевдомассива и его номер
                                             //добавляем штмл код в этот элемент (старый удаляется)
     element.innerHTML = `${nn+1}. ${movieDB.movies[nn]} 
                         <div class=\"delete\"></div>`;
 });
+*/
+
+// += - добавляет к текущему списку. Без него выведет только последний.
+// a = a+1  ===  a+=a
+
+/* 1 запись СТрелочная  */
+movieDB.movies.forEach ((film, i) => {
+    ffffilm1s.innerHTML += `<li class=\"promo__interactive-item\">${i+1}. ${film}
+    <div class=\"delete\"></div>
+    </li>`;
+});
+
+/* 2 запись функшн */
+/* movieDB.movies.forEach ( function (film, i) {
+    ffffilm1s.innerHTML += `<li class=\"promo__interactive-item\">${i+1}. ${film}
+    <div class=\"delete\"></div>
+    </li>`;
+}); */
 
 
 /*  
