@@ -1,17 +1,17 @@
 "use strict";
 
-/* 
-УРОВНИ в DOM
+
+/* УРОВНИ в DOM
 console.log(document.documentElement);
 console.log(document.head);
-console.log(document.body);
-*/
+console.log(document.body); */
+
 
 /* 
 console.log(console.log(document.body.childNodes)); //узлы-дети у body
 console.log(console.log(document.body.firstChild)); // Самый первый узел
 console.log(console.log(document.body.lastChild));  // Самый последний узел 
-*/
+ */
 
 console.log(document.querySelector('#current').parentNode); // получить родителя first
 console.log(document.querySelector('#current').parentNode.parentNode); // ранний родитель wrapper11
@@ -31,7 +31,6 @@ console.log(console.log(document.body.firstElementChild));
 
 
 console.log(console.log(document.body.childNodes)); // Псевдомассив
-
 
 /* Задача:
 Получить все элементы, кроме текстовых нод */
