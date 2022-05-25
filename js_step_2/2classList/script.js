@@ -57,7 +57,7 @@ wrapper.addEventListener('click', (event) => {
 /*     if (event.target && event.target.classList.contains('blue')) { //Проверяем через классы кнопок
         console.log('Hello');
     } */
-    if (event.target && event.target.matches("button.red")) {
+    if (event.target && event.target.matches("button.red")) { // проверяем селектор ксс на кнопке
         console.log('Hello');
     }
 
