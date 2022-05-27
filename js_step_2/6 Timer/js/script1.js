@@ -40,5 +40,47 @@ window.addEventListener('DOMContentLoaded', () => {
     hideDescr();
     showDescr();
 
+
+    // TIMER
+    //1. Определяем счётчик и получаем нужное время
+    const deadline = '2022-06-30';
+    function opredelyaemVremyaDoDedlaina () {
+        const vsevremya = Date.parse(deadline) - Date.parse(new Date());
+        const dni = Math.floor(vsevremya / (1000*60*60*24));
+        const chasy = Math.floor((vsevremya / (1000*60*60)) % 24);
+        const minuty = Math.floor((vsevremya / (1000*60)) % 60);
+        const secundy = Math.floor((vsevremya / (1000)) % 60);
+        return [dni, chasy, minuty, secundy, vsevremya];
+    }
+
+    function dobavlyaenNol (vremya) {
+        if (vremya >= 0 && vremya < 10) {
+            return `0${vremya}`;
+        }
+        return vremya;
+    }
+
+    function ustanovkaSelectorov () {
+        const ustanovka = opredelyaemVremyaDoDedlaina(deadline);
+        let timer = document.querySelector('.timer');
+        timer.querySelector('#days').innerHTML = dobavlyaenNol(ustanovka[0]);
+        timer.querySelector('#hours').innerHTML = dobavlyaenNol(ustanovka[1]);
+        timer.querySelector('#minutes').innerHTML = dobavlyaenNol(ustanovka[2]);
+        timer.querySelector('#seconds').innerHTML =dobavlyaenNol(ustanovka[3]);
+        const ObnovlyaemInterval = setInterval(ustanovkaSelectorov, 1000);
+        if (ustanovka[4] <= 0) {
+            clearInterval(ObnovlyaemInterval);
+        }
+        //timer.querySelector('#days').innerHTML = (ustanovka[1]);
+        //den.innerHTML = (ustanovka[1]);
+        //hours.innerHTML = (ustanovka[2]);
+        //minutes.innerHTML = (ustanovka[3]);
+        //seconds.innerHTML = (ustanovka[4]);
+    }
+
+
+    ustanovkaSelectorov();
+
+
 });
 

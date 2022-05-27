@@ -53,4 +53,76 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+    // TIMER
+    const deadline = '2022-06-30';
+
+    //1. Определяем сколько дней, часов, минут до deadline (2022-06-30)
+    function getTimeRemaning (deadline) {
+        //получим МС в нашем конечном времени
+        const t = Date.parse(deadline) - Date.parse(new Date()),
+                //1000*60*60*24 -кол-во МС в суткахъ
+                days = Math.floor(t / (1000*60*60*24)),
+                // t/100*60*60 - общее кол-во часов до таймера
+                // Общее кол-во часов делим на 24 и возвращаем остаток
+                hours = Math.floor((t / (1000*60*60) % 24)),
+                //кол-во минут в сутках
+                minutes = Math.floor((t / 1000 / 60) % 60),
+                seconds = Math.floor((t / 1000) % 60);
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds,
+        };
+        
+    }
+
+    // Если 5 дней, то выводить 05 дней/ Также с секундами и т.д.
+    function getZeroDney (num) {
+        if (num >= 0 && num < 10) {
+            return `0${num}`;
+        }
+        return num;
+    }
+
+    function setClock(selector, deadline) {
+        const timer = document.querySelector(selector),
+              days = timer.querySelector('#days'),
+              hours = timer.querySelector('#hours'),
+              minutes = timer.querySelector('#minutes'),
+              seconds = timer.querySelector('#seconds'),
+              //ежесекундное обновление счётчика
+              timeInterval = setInterval(updateClock, 1000);
+        
+        //ЧТобы не моргала верстка timeInterval = setInterval(updateClock, 1000);
+        // 1000 (1 сек) не нужно было ждать. Запустим 1 раз вручную
+        updateClock();
+        
+        function updateClock() {
+            const t = getTimeRemaning(deadline);
+           /*в t запишется ретурн
+             return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds,
+            }; */
+            //console.log(t); //{total: 3033057000, days: 35, hours: 2, minutes: 30, seconds: 57}
+            days.innerHTML = getZeroDney(t.days);
+            hours.innerHTML = getZeroDney(t.hours);
+            minutes.innerHTML = getZeroDney(t.minutes);
+            seconds.innerHTML = getZeroDney(t.seconds);
+            
+            //если время прошло, остановить таймер
+            if(t.total <=0) {
+                clearInterval(timeInterval);
+            }
+        }
+    }
+
+    setClock('.timer', deadline);
 });

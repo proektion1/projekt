@@ -39,8 +39,53 @@ document.addEventListener('DOMContentLoaded', () => {
     showTabInfo();
 
 
+// ТАБЫ
 
+const deadline = '2022-08-09';
 
+function schetVremeni () {
+    const obsheevremya = Date.parse(deadline) - Date.parse(new Date()),
+          dni = Math.floor(obsheevremya / (1000*60*60*24)),
+          chasi = Math.floor((obsheevremya / (100*60*60)) % 24),
+          minut = Math.floor((obsheevremya / (100*60)) % 60),
+          sec = Math.floor((obsheevremya/1000) % 60);
+          return {
+              den: dni,
+              chasi: chasi,
+              minut: minut,
+              sec: sec,
+              total: total
+          };
+}
 
+function nulik (beremvremya) {
+    if (beremvremya >= 0 && beremvremya <10) {
+        return `0${beremvremya}`;
+    }
+    return beremvremya;
+}
+
+function stavimSellector () {
+    const blockVremeni = document.querySelector('.timer'),
+          blockDays = blockVremeni.querySelector('#days'),
+          blockChas = blockVremeni.querySelector('#hours'),
+          blockMinut = blockVremeni.querySelector('#minutes'),
+          blockSec = blockVremeni.querySelector('#seconds'),
+            
+          vremya = setInterval(stavimVremya, 1000);
+          stavimVremya();
+            function stavimVremya () {
+                const znacheniyaVremeni = schetVremeni(deadline);
+                    blockDays.innerHTML = nulik(znacheniyaVremeni.den);
+                    blockChas.innerHTML = nulik(znacheniyaVremeni.chasi);
+                    blockMinut.innerHTML = nulik(znacheniyaVremeni.minut);
+                    blockSec.innerHTML = nulik(znacheniyaVremeni.sec);
+                    if (znacheniyaVremeni.total <= 0) {
+                        clearInterval(stavimVremya);
+                    }
+            }
+            
+    }
+    stavimSellector();
 
 });
