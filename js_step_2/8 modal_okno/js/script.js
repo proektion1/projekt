@@ -144,20 +144,23 @@ window.addEventListener('DOMContentLoaded', () => {
        // 1 способ. Через тоггл
       // windowModal.classList.toggle('show'); //если нет класс show, то добавляем
       //windowModal.style.display = 'block'; - если document.querySelector (т.е. 1 элемент)
-      knoplka.addEventListener('click', () => {
-      windowModal.classList.add('show');
-      windowModal.classList.remove('hide');
-      document.body.style.overflow = 'hidden'; // нельзя прокручивать страницу
-    });
+      knoplka.addEventListener('click', openModal);
     });
  
-
+        // Функция открытия окна
+    function openModal () {
+        windowModal.classList.add('show');
+        windowModal.classList.remove('hide');
+        document.body.style.overflow = 'hidden'; // нельзя прокручивать страницу
+        clearInterval(modalTimerId); // Если юзер сам открыл, то через время не открываем
+    }
 
     // 2. Закрываем окно
     function clozemodal () {
         windowModal.classList.add('hide');
         windowModal.classList.remove('show');
         document.body.style.overflow = '';
+       
     }
     // Само закрытие
     windowModalClose.addEventListener('click', clozemodal);
@@ -178,6 +181,22 @@ window.addEventListener('DOMContentLoaded', () => {
         }
      });
 
+     //4. Появление модального окна через 3 секунды
+      const modalTimerId = setTimeout(openModal, 8000);
+
+      function showModalByScroll () {
+        //pageYOffset - пикселей, на которое прокручен документ по вертикали (вниз или вверх). 
+        //document.documentElement.clientHeight - высота видимой части экрана
+        //document.documentElement.scrollHeight - полный размер окна с учётом прокрутки
+        //прокрутили + сложили видиму часть и сравнили со всей высотой страницы
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll); // сбросить обработчик, чтобы каждый раз не вызывался при прокрутке вниз
+          }
+      }
+
+
+      window.addEventListener('scroll', showModalByScroll);
 
 
 });
