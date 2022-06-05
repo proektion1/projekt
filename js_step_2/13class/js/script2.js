@@ -127,4 +127,58 @@ knopkaOpenOkno.forEach(knopki => {
     
 
 
+
+    class CardTovar {
+        constructor (img, alt, title, des, price, mestoSelector) {
+            this.img = img;
+            this.alt = alt;
+            this.title = title;
+            this.des = des;
+            this.price = price;
+            this.mesto = document.querySelector(mestoSelector);
+        }
+
+        render() {
+            const element = document.createElement('div');
+            element.innerHTML = `
+            <div class="menu__item">
+                    <img src=${this.img} alt=${this.alt}>
+                    <h3 class="menu__item-subtitle">${this.title}</h3>
+                    <div class="menu__item-descr">${this.des}</div>
+                    <div class="menu__item-divider"></div>
+                    <div class="menu__item-price">
+                        <div class="menu__item-cost">Цена:</div>
+                        <div class="menu__item-total"><span>${this.price}</span> руб/день</div>
+                    </div>
+                </div>
+            `;
+            this.mesto.append(element);
+        }
+    }
+
+    new CardTovar(
+        "img/tabs/vegy.jpg",
+        "vegy",
+        'Меню "Фитнес"',
+        'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+        9,
+        '.menu .container'
+    ).render();
+    new CardTovar(
+        "img/tabs/elite.jpg",
+        "elite",
+        'Меню “Премиум”',
+        'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+        11,
+        '.menu .container'
+    ).render(); 
+    new CardTovar(
+        "img/tabs/post.jpg",
+        "post",
+        'Меню "Постное"',
+        'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
+        12,
+        '.menu .container'        
+    ).render();  
+
 });

@@ -182,7 +182,7 @@ window.addEventListener('DOMContentLoaded', () => {
      });
 
      //4. Появление модального окна через 8 секунд
-      const modalTimerId = setTimeout(openModal, 8000);
+     // const modalTimerId = setTimeout(openModal, 8000);
 
       function showModalByScroll () {
         //pageYOffset - пикселей, на которое прокручен документ по вертикали (вниз или вверх). 
@@ -197,6 +197,72 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
       window.addEventListener('scroll', showModalByScroll);
+
+
+      // Используем классы для карточек
+
+      class MenuCard {
+          constructor (src, alt, title, desc, price, parentSelector) {
+            // Перечисляем св-ва
+            this.src = src;
+            this.alt = alt;
+            this.title = title;
+            this.desc = desc;
+            this.price = price;
+            this.parent = document.querySelector(parentSelector); // '.menu .container'
+            this.transfer = 3;
+            this.changeToRub();
+            
+          }
+          // ДЕЛАЕМ КОВЕРТАЦИЮ
+          changeToRub() {
+            this.price = +this.price * this.transfer;
+          }
+        // Перечисляем методы
+          render() {
+            const element = document.createElement('div');
+            element.innerHTML = `
+                    <div class="menu__item">
+                    <img src=${this.src} alt=${this.alt}>
+                    <h3 class="menu__item-subtitle">${this.title}</h3>
+                    <div class="menu__item-descr">${this.desc}</div>
+                    <div class="menu__item-divider"></div>
+                    <div class="menu__item-price">
+                        <div class="menu__item-cost">Цена:</div>
+                        <div class="menu__item-total"><span>${this.price}</span> руб/день</div>
+                    </div></div>
+            `;
+            this.parent.append(element); // внутрь селектора методом append передадим element
+          }
+
+      }
+
+      new MenuCard( // 1 раз покажет и не сохранит. Где-то вызвать не получится
+        "img/tabs/vegy.jpg",
+        "vegy",
+        'Меню "Фитнес"',
+        'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+        9,
+        '.menu .container'
+      ).render(); 
+      
+      new MenuCard( // 1 раз покажет и не сохранит. Где-то вызвать не получится
+      "img/tabs/elite.jpg",
+        "elite",
+        'Меню “Премиум”',
+        'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+        11,
+        '.menu .container'
+      ).render(); 
+
+      new MenuCard( // 1 раз покажет и не сохранит. Где-то вызвать не получится
+      "img/tabs/post.jpg",
+      "post",
+      'Меню "Постное"',
+      'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
+      12,
+      '.menu .container'
+    ).render(); 
 
 
 });
