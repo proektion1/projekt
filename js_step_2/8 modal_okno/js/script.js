@@ -181,7 +181,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
      });
 
-     //4. Появление модального окна через 3 секунды
+     //4. Появление модального окна через 8 секунд
       const modalTimerId = setTimeout(openModal, 8000);
 
       function showModalByScroll () {

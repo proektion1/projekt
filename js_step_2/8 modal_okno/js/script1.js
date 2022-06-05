@@ -90,11 +90,16 @@ const modOkno = document.querySelector('.modal');
 const zakryt = document.querySelector('.modal__close');
 
 // 1. Открываем модальное окно на всех кнопках
+
+function openn () {
+    modOkno.classList.add('show');
+    modOkno.classList.remove('hide');
+    clearTimeout(showmyOpen);
+}
+
+
 knopkaOpenOkno.forEach(knopki => {
-    knopki.addEventListener('click', () => {
-        modOkno.classList.add('show');
-        modOkno.classList.remove('hide');
-    });
+    knopki.addEventListener('click', openn);
 });
 
 //2. Закрытие мод окна
@@ -119,6 +124,19 @@ knopkaOpenOkno.forEach(knopki => {
 
     
 
+    // Задача с появление модальных окон при прокрутке
+    const showmyOpen = setTimeout(openn, 8000);
+
+    function scrollim () {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+            openn();
+            window.removeEventListener('scroll', scrollim);
+        }
+    }
+
+
+    window.addEventListener('scroll', scrollim);
+    
 
 });
 
