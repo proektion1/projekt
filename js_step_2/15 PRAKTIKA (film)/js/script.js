@@ -15,6 +15,17 @@ fonImage.style.backgroundImage = "url('img/bg.jpg')";
 
 //4) Список фильмов на странице сформировать на основании данных из этого JS файла. Отсортировать их по алфавиту 
 //5) Добавить нумерацию выведенных фильмов 
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "123",
+        "Одержимость",
+        "Скотт11 Пилигрим против...",
+        "ЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯ",
+        "ЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯ111111"
+    ]
+};
 movieDB.movies.sort();
 const spisokFilmovNaStranice = document.querySelector('.promo__interactive-list');
 
